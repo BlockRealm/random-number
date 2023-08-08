@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>模仿流浪地球100000位数字随机</title>
+    <link rel="icon" type="image/png" href="https://pic.imgdb.cn/item/64d22fc21ddac507cc5736b8.png">
+    <style>
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .random-number-container {
+            text-align: center;
+        }
+
+        .random-number {
+            font-size: 24px;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .generate-button {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .generate-button button {
+            padding: 10px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .generate-button button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Number Generator</h1>
+
+    <div class="random-number-container">
+        <div class="random-number"></div>
+    </div>
+
+    <div class="generate-button">
+        <button onclick="generateRandomNumber()">Generate Random Number</button>
+    </div>
+
+    <script>
+        function generateRandomNumber() {
+            var randomNumber = generateRandomDigits(100000);
+            displayRandomNumber(randomNumber);
+        }
+
+        function generateRandomDigits(length) {
+            var result = '';
+            var characters = '0123456789';
+            for (var i = 0; i < length; i++) {
+                var randomIndex = Math.floor(Math.random() * characters.length);
+                var randomDigit = characters.charAt(randomIndex);
+                result += randomDigit;
+            }
+            return result;
+        }
+
+        function displayRandomNumber(number) {
+            var randomNumberElement = document.querySelector('.random-number');
+            randomNumberElement.textContent = number;
+        }
+    </script>
+</body>
+</html>
